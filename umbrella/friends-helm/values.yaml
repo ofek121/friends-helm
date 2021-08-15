@@ -1,0 +1,69 @@
+# Default values for fix-helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  imagePullSecret:  [ name: blue-omek ]
+  ingress:
+  enabled: false
+    #    annotations:
+    #     kubernetes.io/ingress.class: addon-http-application-routing    # delete this inside
+    hosts:
+      - host: blue-omek.branch-yesodot.org 
+        paths: 
+        - path: /auth/login
+          service: authenticator-api
+          port: "3000"
+
+        - path: /auth/callback
+          service: authenticator-api
+          port: "3000"
+
+        - path: /api/calculations
+          service: calculations-compositor
+          port: "3000"
+
+        - path: /api/requests
+          service: requests-compositor
+          port: "3000"
+          
+        - path: /api/records
+          service: calculations-compositor
+          port: "3000"
+
+        - path: /api/skynet
+          service: skynet-compositor
+          port: "3000"
+
+        - path: /api/translation
+          service: calculations-compositor
+          port: "3000"
+        
+        - path: /api/occupations
+          service: calculations-compositor
+          port: "3000"
+
+        - path: /api/unit
+          service: users-compositor
+          port: "3000"
+
+        - path: /api/users
+          service: users-compositor
+          port: "3000"
+
+        - path: /api/roles
+          service: users-compositor
+          port: "3000"
+
+        - path: /
+          service: omek-client
+          port: "80"
+          
+  tls: []
+  resources:
+    limits:
+      cpu: 250m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi

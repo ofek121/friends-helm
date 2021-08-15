@@ -1,0 +1,128 @@
+configmaps:
+  - name: application
+    data: 
+      APPLICATION_PORT: "3000"
+       
+  - name: authentication
+    data: 
+      SECRET_KEY: blue-omek@secret_5432
+  
+  - name: authenticator-api
+    data: 
+      USERS_COMPOSITOR_HOST: http://users-compositor
+      USERS_API: /api/users
+
+      AUTH_CALLBACK_URL: http://blue-omek.branch-yesodot.org/auth/callback
+      SHRAGA_URL: https://shraga-prod.northeurope.cloudapp.azure.com
+      TOKEN: omek-token
+
+      UNREGISTERED_CLIENT_ENDPOINT: http://blue-omek.branch-yesodot.org/error
+      CLIENT_ENDPOINT: http://blue-omek.branch-yesodot.org/
+  
+  - name: calculations-compositor
+    data: 
+      OCCUPATIONS_HOST: http://occupations-api
+      OCCUPATIONS_API: /api/occupations
+
+      RECORDS_HOST: http://records-api
+      RECORDS_API: /api/records
+
+      REQUESTS_API: /api/requests
+      REQUESTS_HOST: http://requests-api
+
+      COMMENTS_HOST: http://comments-api
+      COMMENTS_API: /api/comments
+
+      TRANSLATION_HOST: http://translation-api
+      TRANSLATION_API: /api/translation
+
+      UNITS_HIERARCHY_HOST: http://units-hierarchy-api
+      UNITS_HIERARCHY_API: /api/unit
+
+      SKYNET_API: /api/skynet
+      SKYNET_HOST: http://skynet-compositor
+
+      SALARIES_HOST: http://salaries-api
+      SALARIES_API: /api/salaries
+
+  - name: mongo
+    data:
+      DB_CONNECTION_URL: mongodb://myUserAdmin:blue-omek@13.79.225.207:27017/?authSource=admin
+
+  # - name: mysql
+  #   data:
+  #     MYSQL_ROOT_PASSWORD: omek
+  #     MYSQL_USER: omek
+  #     MYSQL_PASSWORD: "123456"
+  #     MYSQL_DATABASE: translation
+
+
+  - name: outgoing-spike-proxy-service
+    data:
+      PORT: "3000"
+      MODE: outgoing
+      USE_REDIS: "true"
+      SPIKE_REDIS_HOST: redis://redis
+      SPIKE_CLIENT_ID: tcEiIn_Ry9Du1sTzTT9mkzxI0szPluAYVTw6mIyG
+      SPIKE_CLIENT_SECRET: UiZVvH4K8vTTwV3UndSKUhRuKcy_3Xx75SB5OLiUyprI0V7tIB8AfmFaG_0XfrWEZvuaz_0Nha77KfW967dWLYzQm6Vk6mTpakpm
+      SPIKE_URL: https://ospike.northeurope.cloudapp.azure.com/oauth2/token
+      SPIKE_REDIS_KEY_PREFIX: blue_omek_proxy_token
+      TOKEN_GRANT_TYPE: client_credentials
+      OUTGOING_SERVICES: '[ { "route": "/graphql", "target": "http://graphql.skynet.rabaz.org", "audience": "rabaz_skynet", "useBearerToken": false } ]'
+
+
+  - name: requests-compositor
+    data: 
+      TRANSLATION_HOST: http://translation-api
+
+      SALARIES_HOST: http://salaries-api
+
+      RECORDS_HOST: http://records-api
+
+      OCCUPATIONS_HOST: http://occupations-api
+
+      UNITS_HIERARCHY_HOST: http://units-hierarchy-api
+
+      REQUESTS_HOST: http://requests-api
+
+      SKYNET_HOST: http://skynet-compositor
+
+      USERS_HOST: http://users-api
+
+  - name: rpc
+    data: 
+      RPC_PORT: "7000"
+
+  - name: skynet-api
+    data: 
+      GRAPHQL_URL: http://outgoing-spike-proxy-service:3000
+      GRAPHQL_API: /graphql
+
+  - name: skynet-compositor
+    data:
+      SKYNET_HOST: http://skynet-api
+      SKYNET_API: /api/skynet
+
+      UNITS_HIERARCHY_API_HOST: http://units-hierarchy-api
+      UNITS_HIERARCHY_API: /api/unit
+  
+  - name: translation-api
+    data: 
+      MYSQL_DATABASE: translation
+      MYSQL_USER: omek
+      MYSQL_PASSWORD: "123456"
+      DB_HOST: mysql
+      DB_PORT: "3306"
+      DB_DIALECT: mysql
+
+  - name: users-compositor
+    data:
+      USERS_API_HOST: http://users-api
+      USERS_API: /api/users
+
+      ROLES_API_HOST: http://roles-api
+      ROLES_API_RPC_HOST: roles-api
+      ROLES_API: /api/roles
+
+      UNITS_HIERARCHY_API_HOST: http://units-hierarchy-api
+      UNITS_HIERARCHY_API: /api/unit

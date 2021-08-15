@@ -1,0 +1,78 @@
+apiVersion: v2
+name: blue-omek-helm
+description: A Helm chart for Kubernetes
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+version: 0.1.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application.
+appVersion: 1.16.0
+
+dependencies:
+- name: common
+  version: "0.1.0"
+  repository: "file://../common/"
+- name: config-maps
+  version: "0.1.0"
+  repository: "file://../config-maps/"
+- name: authenticator-api
+  version: "0.1.0"
+  repository: "file://../authenticator-api/"
+- name: occupations-api
+  version: "0.1.0"
+  repository: "file://../occupations-api/"
+- name: omek-client
+  version: "0.1.0"
+  repository: "file://../omek-client/"
+- name: outgoing-spike-proxy-service
+  version: "0.1.0"
+  repository: "file://../outgoing-spike-proxy-service/"
+- name: requests-api
+  version: "0.1.0"
+  repository: "file://../requests-api/"
+- name: requests-compositor
+  version: "0.1.0"
+  repository: "file://../requests-compositor/"
+- name: roles-api
+  version: "0.1.0"
+  repository: "file://../roles-api/"
+- name: skynet-api
+  version: "0.1.0"
+  repository: "file://../skynet-api/"
+- name: skynet-compositor
+  version: "0.1.0"
+  repository: "file://../skynet-compositor/"
+- name: translation-api
+  version: "0.1.0"
+  repository: "file://../translation-api/"
+- name: units-hierarchy-api
+  version: "0.1.0"
+  repository: "file://../units-hierarchy-api/"
+- name: users-api
+  version: "0.1.0"
+  repository: "file://../users-api/"
+- name: users-compositor
+  version: "0.1.0"
+  repository: "file://../users-compositor/"
+- name: calculations-compositor
+  version: "0.1.0"
+  repository: "file://../calculations-compositor/"
+- name: records-api
+  version: "0.1.0"
+  repository: "file://../records-api/"
+- name: salaries-api
+  version: "0.1.0"
+  repository: "file://../salaries-api/"
+
