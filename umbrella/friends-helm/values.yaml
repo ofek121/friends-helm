@@ -3,61 +3,26 @@
 # Declare variables to be passed into your templates.
 
 global:
-  imagePullSecret:  [ name: blue-omek ]
+  imagePullSecret:  [ name: friends ]
   ingress:
   enabled: false
     #    annotations:
     #     kubernetes.io/ingress.class: addon-http-application-routing    # delete this inside
     hosts:
-      - host: blue-omek.branch-yesodot.org 
+      - host: friends.friends.com
         paths: 
-        - path: /auth/login
-          service: authenticator-api
-          port: "3000"
-
-        - path: /auth/callback
-          service: authenticator-api
-          port: "3000"
-
-        - path: /api/calculations
-          service: calculations-compositor
-          port: "3000"
-
-        - path: /api/requests
-          service: requests-compositor
-          port: "3000"
-          
-        - path: /api/records
-          service: calculations-compositor
-          port: "3000"
-
-        - path: /api/skynet
-          service: skynet-compositor
-          port: "3000"
-
-        - path: /api/translation
-          service: calculations-compositor
-          port: "3000"
-        
-        - path: /api/occupations
-          service: calculations-compositor
-          port: "3000"
-
-        - path: /api/unit
-          service: users-compositor
-          port: "3000"
-
-        - path: /api/users
-          service: users-compositor
-          port: "3000"
-
-        - path: /api/roles
-          service: users-compositor
-          port: "3000"
+        - path: /api
+          service: api
+          port: "8080"
 
         - path: /
-          service: omek-client
+          service: friends-frontend
           port: "80"
+
+        - path: /auth
+          service: authentication-service
+          port: "8010"
+
           
   tls: []
   resources:

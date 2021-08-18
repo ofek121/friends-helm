@@ -5,21 +5,19 @@
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/notification-service
+  repository: friends.azurecr.io/create
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v0.0.2
+  tag: latest
 
 rpc:
-  enabled: false
+enabled: false
 
-configmaps:
-  - name: application
-  - name: mongo
-    
+configmaps: []
+
 imagePullSecrets: []
-nameOverride: "notification-service"
-fullnameOverride: "notification-service"
+nameOverride: "create"
+fullnameOverride: "create"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -28,7 +26,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: notification-service
+  name: create
 
 podAnnotations: {}
 

@@ -5,21 +5,21 @@
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/join-requests-service
+  repository: friends.azurecr.io/friends-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v0.0.1
+  tag: latest
 
 rpc:
-  enabled: false
+enabled: false
 
 configmaps:
-  - name: application
-  - name: mongo
-    
+  - name: moleculer
+  - name: onwer
+
 imagePullSecrets: []
-nameOverride: "join-requests-service"
-fullnameOverride: "join-requests-service"
+nameOverride: "owner"
+fullnameOverride: "owner"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -28,7 +28,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: join-requests-service
+  name: owner
 
 podAnnotations: {}
 

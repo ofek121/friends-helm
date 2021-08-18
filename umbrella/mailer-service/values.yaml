@@ -5,23 +5,20 @@
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/owner-requests-service
+  repository: friends.azurecr.io/friends-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v0.0.3
+  tag: latest
 
 rpc:
-enabled: false
+  enabled: false
 
 configmaps:
-  - name: authentication
-  - name: application
-  - name: rpc
-  - name: owner-requests-service
-
+  - name: mailer-service
+    
 imagePullSecrets: []
-nameOverride: "owner-requests-service"
-fullnameOverride: "owner-requests-service"
+nameOverride: "mailer-service"
+fullnameOverride: "mailer-service"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -30,13 +27,13 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: owner-requests-service
+  name: mailer-service
 
 podAnnotations: {}
 
 service:
   type: ClusterIP
-  port: "3000"
+  port: "8000"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

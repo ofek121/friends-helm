@@ -1,27 +1,24 @@
-  # Default values for common.
+# Default values for common.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/ad-service
+  repository: friends.azurecr.io/friends-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v0.0.4
+  tag: latest
 
 rpc:
 enabled: false
 
 configmaps:
-  - name: authentication
-  - name: application
-  - name: rpc
-  - name: ad-service
-
+  - name: moleculer
+  - name: user
 imagePullSecrets: []
-nameOverride: "ad-service"
-fullnameOverride: "ad-service"
+nameOverride: "user"
+fullnameOverride: "user"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -30,7 +27,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: ad-service
+  name: user
 
 podAnnotations: {}
 

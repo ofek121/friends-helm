@@ -14,11 +14,11 @@ rpc:
   enabled: false
 
 configmaps:
-  - name: outgoing-spike-proxy-service
+  - name: outgoing-proxy-service
 
 imagePullSecrets: []
-nameOverride: "outgoing-spike-proxy-service"
-fullnameOverride: "outgoing-spike-proxy-service"
+nameOverride: "outgoing-proxy-service"
+fullnameOverride: "outgoing-proxy-service"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -26,14 +26,14 @@ serviceAccount:
   # Annotations to add to the service account
   annotations: {}
   # The name of the service account to use.
-  # If not set and outgoing-spike-proxy-servicecreate is true, a name is generated using the fullname template
-  name: outgoing-spike-proxy-service
+  # If not set and outgoing-proxy-servicecreate is true, a name is generated using the fullname template
+  name: outgoing-proxy-service
 
 podAnnotations: {}
 
 service:
   type: ClusterIP
-  port: "3000"
+  port: "8010"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

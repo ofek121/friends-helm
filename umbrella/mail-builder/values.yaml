@@ -5,17 +5,17 @@
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/mail-builder
+  repository: friends.azurecr.io/friends-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v0.0.4
+  tag: latest
 
 rpc:
 enabled: false
 
 configmaps:
-  - name: application
-  - name: mongo
+  - name: moleculer
+  - name: mail-builder
 
 imagePullSecrets: []
 nameOverride: "mail-builder"

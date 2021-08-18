@@ -5,21 +5,21 @@
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/user-service
+  repository: friends.azurecr.io/friends-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v0.0.4
+  tag: latest
 
 rpc:
-enabled: false
+  enabled: false
 
 configmaps:
-  - name: user-service
-  - name: rpc
-  - name: application
+  - name: moleculer
+  - name: join
+    
 imagePullSecrets: []
-nameOverride: "user-service"
-fullnameOverride: "user-service"
+nameOverride: "join"
+fullnameOverride: "join"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -28,7 +28,7 @@ serviceAccount:
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
-  name: user-service
+  name: join
 
 podAnnotations: {}
 

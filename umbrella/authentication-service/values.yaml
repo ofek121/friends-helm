@@ -5,17 +5,17 @@
 replicaCount: 1
 
 images:
-  repository: friends.azurecr.io/authentication-service
+  repository: friends.azurecr.io/friends-backend
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: v1.1.1
+  tag: latest
 
 rpc:
   enabled: false
 
 configmaps:
-  - name: application
-  - name: mongo
+  - name: authentication
+
 imagePullSecrets: []
 nameOverride: "authentication-service"
 fullnameOverride: "authentication-service"
@@ -33,7 +33,7 @@ podAnnotations: {}
 
 service:
   type: ClusterIP
-  port: "3000"
+  port: "8004"
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
